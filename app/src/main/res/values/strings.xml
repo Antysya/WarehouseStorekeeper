@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Warehouse Storekeeper</string>
+    <string name="login_login">Логин</string>
+    <string name="login_password">Пароль</string>
+    <string name="login_log_in">Войти</string>
+    <string name="login_error">Не удалось войти</string>
+    <string name="orders_error">Не удалось загрузить заказы</string>
+    <string name="products_error">Не удалось загрузить продукты</string>
+    <string name="products_confirm">Готово</string>
+    <string name="products_confirm_error">Не удалось сохранить заказ</string>
+</resources>
