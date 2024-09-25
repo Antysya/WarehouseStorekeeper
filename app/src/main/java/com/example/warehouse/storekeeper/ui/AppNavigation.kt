@@ -42,7 +42,7 @@ fun AppNavigation(mainRepository: MainRepository) {
             ProductsScreen(
                 mainRepository = mainRepository,
                 orderId = it.arguments?.getInt("orderId") ?: -1,
-                onConfirmed = { controller.popBackStack() }
+                onConfirmed = { controller.navigate(DESTINATION_ORDERS) }
             )
         }
     }

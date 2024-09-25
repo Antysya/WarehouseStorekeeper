@@ -22,10 +22,14 @@ import javax.net.ssl.X509TrustManager
 interface MainApi {
 
     @POST("users/loginMobil")
-    suspend fun login(@Body body: LoginRequest): Response<LoginResponse>
+    suspend fun login(
+        @Body body: LoginRequest
+    ): Response<LoginResponse>
 
     @GET("orders/get_order_in_progress")
-    suspend fun getOrders(@Header("Authorization") token: String): Response<List<Order>>
+    suspend fun getOrders(
+        @Header("Authorization") token: String
+    ): Response<List<Order>>
 
     @GET("products-in-orders/getProductsByOrder")
     suspend fun getProducts(
@@ -33,10 +37,8 @@ interface MainApi {
         @Query("id") orderId: Int
     ): Response<List<Product>>
 
-    //@POST("Order/{id}/confirm")
     @POST("orders/status/{id}")
     suspend fun confirmOrder(
-        @Header("Authorization") token: String,
         @Path("id") orderId: Int
     ): Response<Unit>
 
@@ -57,7 +59,8 @@ interface MainApi {
                 .build()
 
             return Retrofit.Builder()
-                .baseUrl("https://192.168.1.70:7181/api/")
+                //.baseUrl("https://192.168.1.70:7181/api/")
+                .baseUrl("https://192.168.43.6:7181/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build()

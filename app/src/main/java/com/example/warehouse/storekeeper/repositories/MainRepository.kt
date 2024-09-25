@@ -30,11 +30,6 @@ class MainRepository(context: Context) {
     }
 
     fun getOrders() = flow {
-        val offlineOrders = database.orderDao.getAll()
-        if (offlineOrders.isNotEmpty()) {
-            emit(offlineOrders)
-        }
-
         val onlineOrders = try {
             mainApi.getOrders(token).body()
         } catch (_: Exception) {
@@ -49,7 +44,7 @@ class MainRepository(context: Context) {
 
     fun confirmOrder(orderId: Int) = flow {
         val result = try {
-            mainApi.confirmOrder(token, orderId).isSuccessful
+            mainApi.confirmOrder(orderId).isSuccessful
         } catch (_: Exception) {
             false
         }
